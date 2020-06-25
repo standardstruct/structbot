@@ -1,0 +1,25 @@
+{
+  "name": "structbot",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Standard-Structure/structbot.git"
+  },
+  "author": "Caleb Denio",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Standard-Structure/structbot/issues"
+  },
+  "homepage": "https://github.com/Standard-Structure/structbot#readme",
+  "devDependencies": {
+    "@vercel/node": "^1.7.1"
+  },
+  "dependencies": {
+    "@slack/web-api": "^5.10.0"
+  }
+}
