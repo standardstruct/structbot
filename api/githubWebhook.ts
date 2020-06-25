@@ -26,7 +26,35 @@ export default async (req: NowRequest, res: NowResponse) => {
     case "ping":
       console.log("Pong!");
       break;
+    case "star":
+      if (payload.action == "created") {
+        console.log(`Someone starred ${payload.repository.name}!`);
+        await slack.chat.postMessage({
+          text: `Someone just starred *${payload.repository.name}* on GitHub! :star2: :tada:`,
+          channel: "C01409D1B0B",
+          blocks: [
+            {
+              type: "section",
+              text: {
+                type: "mrkdwn",
+                text: `Someone just starred *<${payload.repository.html_url}|${payload.repository.name}>* on GitHub! :star2: :tada:`,
+              },
+            },
+            {
+              type: "context",
+              elements: [
+                {
+                  type: "mrkdwn",
+                  text: `It was <${payload.sender.html_url}|${payload.sender.login}>, btw`
+                }
+              ]
+            }
+          ],
+        });
+      }
+      break;
     case "pull_request":
+      console.log("PR opened!");
       if (payload.action == "opened" || payload.action == "reopened") {
         await slack.chat.postMessage({
           text: `New PR ready for review: *${payload.pull_request.title}*`,
